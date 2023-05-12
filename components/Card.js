@@ -1,8 +1,8 @@
 import Image from "next/image";
 import styled from "styled-components";
-import Button from "./Button";
+import AddButton from "./AddButton";
 
-export default function Card({ article }) {
+export default function Card({ article, handleAdd }) {
   return (
     <li>
       <StyledArticle>
@@ -18,7 +18,7 @@ export default function Card({ article }) {
           <p>{article.year}</p>
           <p>{article.price} €</p>
         </div>
-        <Button/>
+        <AddButton handleAdd={()=>handleAdd(article.id)}/>
       </StyledArticle>
     </li>
   );
