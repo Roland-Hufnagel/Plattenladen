@@ -6,7 +6,7 @@ export default function HomePage() {
   const { data: session } = useSession();
   return (
     <div>
-      <h1>Welcome to my plattenladen</h1>
+      <h1>Welcome to my Plattenladen</h1>
       {session && (
         <>
           Signed in as {session.user.email} <br />
