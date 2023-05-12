@@ -6,7 +6,9 @@ export default createGlobalStyle`
   *::after {
     box-sizing: border-box;
   }
-
+ul{
+  list-style: none;
+}
   body {
     margin: 0;
     font-family: system-ui;
