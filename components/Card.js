@@ -1,8 +1,9 @@
 import Image from "next/image";
 import styled from "styled-components";
 import AddButton from "./AddButton";
-
+import { useSession } from "next-auth/react";
 export default function Card({ article, handleAdd }) {
+  const { data: session } = useSession();
   return (
     <li>
       <StyledArticle>
@@ -18,7 +19,7 @@ export default function Card({ article, handleAdd }) {
           <p>{article.year}</p>
           <p>{article.price} €</p>
         </div>
-        <AddButton handleAdd={()=>handleAdd(article.id)}/>
+        {session && <AddButton handleAdd={() => handleAdd(article.id)} />}
       </StyledArticle>
     </li>
   );

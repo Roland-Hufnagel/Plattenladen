@@ -5,11 +5,19 @@ import Link from "next/link";
 
 export default function HomePage() {
   const { data: session } = useSession();
-  function handleAdd(id) {
-    console.log(id, "wurde geadded von ", session.user.name);//funktioniert
-    
+  async function handleAdd(id) {
+    //console.log(id, "wurde geadded von ", session.user.name); //funktioniert
+    const response = await fetch("/api/shoppingcard", {
+      method: "POST",
+      body: JSON.stringify({ email: session.user.email, id: id }),
+      headers: { "Content-Type": "application/json" },
+    });
+    if (response.ok) {
+      console.log(await response.json());
+    } else {
+      console.error(`Error: ${response.status}`);
+    }
   }
-
   console.log("Session: ", session);
   return (
     <div>
@@ -25,6 +33,7 @@ export default function HomePage() {
         <>
           Not signed in <br />
           <button onClick={() => signIn()}>Sign in</button>
+          <Link href="/api/auth/signin">Link to signIn</Link>
         </>
       )}
       <ul>

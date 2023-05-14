@@ -17,6 +17,7 @@ export default function ShoppingCart() {
         <>
           Not signed in <br />
           <button onClick={() => signIn()}>Sign in</button>
+          <Link href="/api/auth/signin">Link to signIn</Link>
         </>
       )}
     </>
